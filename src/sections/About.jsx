@@ -78,6 +78,10 @@ export default function About() {
               meses) consiga manter sem chorar</strong>.
             </Reveal>
 
+            <Reveal as="p" className="about-paragraph" y={24} delay={0.25}>
+              Alinhando os conhecimentos do Devclub e a inteligência avançada da MasterClass, criei um método próprio de auditoria técnica de código focado em identificar e mitigar vulnerabilidades de forma ativa — o <strong><a href="https://github.com/jeanderson-silva8/protocolo-de-seguranca" target="_blank" rel="noopener noreferrer" className="about-link-accent">Protocolo de Segurança</a></strong> —, consolidando o mais alto nível de robustez e profissionalismo em cada entrega.
+            </Reveal>
+
             <Reveal.Group className="about-meta" stagger={0.1}>
               <Reveal.Item className="about-meta-item">
                 <MapPin size={16} className="about-meta-icon" />
