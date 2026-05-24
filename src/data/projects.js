@@ -262,7 +262,7 @@ export const PROJECTS = [
     codeUrl: 'https://github.com/jeanderson-silva8/fuga-na-floresta',
     cover: '/fuga-floresta-cover-highres.png',
     mobileCover: '/fuga-floresta-mobile-highres.png',
-    videoUrl: null,
+    videoUrl: '/videos/fuga-floresta.mp4',
     detail: {
       problem:
         'Jogos web costumam vir em duas formas ruins: bundles gigantes carregados de motor (Phaser, PixiJS, Unity WebGL) que travam celular fraco, ou demos vanilla mal feitas que perdem frame, têm colisão furada e morrem em portrait. Não havia meio-termo: endless runner leve, suave e que funcionasse offline no navegador do ônibus.',
@@ -311,7 +311,7 @@ export const PROJECTS = [
     codeUrl: 'https://github.com/jeanderson-silva8/organiza-dashboard-full',
     cover: '/organiza-dia-highres.png',
     mobileCover: '/organiza-mobile-highres.png',
-    videoUrl: null,
+    videoUrl: '/videos/organiza-dashboard.mp4',
     detail: {
       problem:
         'Maioria dos dashboards de tarefas no mercado é uma de duas coisas: SPA bonita sem backend (perde tudo no F5) ou ferramenta corporativa caríssima para resolver "anotar o que fazer hoje". Falta o meio: full stack honesto, com autenticação real, dados persistidos em banco e interface premium — sem assinatura mensal.',
@@ -360,7 +360,7 @@ export const PROJECTS = [
     codeUrl: 'https://github.com/jeanderson-silva8/nord-nails',
     cover: '/nordnails-cover-highres.png',
     mobileCover: '/nordnails-mobile-highres.png',
-    videoUrl: null,
+    videoUrl: '/videos/nord-nails.mp4',
     detail: {
       problem:
         'Estúdios de beleza dependem de Instagram para captar clientes — mas Instagram não converte: não tem agendamento, não fala de preço, não constrói autoridade. Sites prontos (Wix, sites de salão) são genéricos, lentos e empurram a marca pro mesmo molde de mil concorrentes. Quem quer ticket alto precisa parecer ticket alto.',
@@ -409,7 +409,7 @@ export const PROJECTS = [
     codeUrl: 'https://github.com/jeanderson-silva8/la-maison-restaurant-site',
     cover: '/lamaison-cover-highres.png',
     mobileCover: '/lamaison-mobile-highres.png',
-    videoUrl: null,
+    videoUrl: '/videos/la-maison.mp4',
     detail: {
       problem:
         'Alta gastronomia se vende pela experiência — e quase nenhum site de restaurante fino transmite isso. Templates iguais, fotos estáticas, cardápio em PDF. O cliente que paga R$ 400 num jantar não decide pelo mesmo site que escolhe pizza no iFood. Falta tradução digital do que torna o restaurante especial.',
@@ -458,7 +458,7 @@ export const PROJECTS = [
     codeUrl: 'https://github.com/jeanderson-silva8/thumbnail-forge',
     cover: '/thumbnail-cover-highres.png',
     mobileCover: '/thumbnail-mobile-highres.png',
-    videoUrl: null,
+    videoUrl: '/videos/thumbnail-forge.mp4',
     detail: {
       problem:
         'Criadores de conteúdo no YouTube/TikTok perdem horas em Photoshop testando variações de thumbnail — e a maioria não tem skill de design para acertar. Ferramentas existentes ou geram arte genérica de banco de imagem, ou cobram US$ 30/mês por algo que o criador usa 3 vezes por semana. Falta gerador que entenda a linguagem de CTR.',
@@ -507,7 +507,7 @@ export const PROJECTS = [
     codeUrl: 'https://github.com/jeanderson-silva8/mario-bros',
     cover: '/mario-cover-highres.png',
     mobileCover: '/mario-mobile-highres.png',
-    videoUrl: null,
+    videoUrl: '/videos/mario-bros.mp4',
     detail: {
       problem:
         'Tutoriais de animação CSS na internet ensinam o trivial: hover muda cor, botão pulsa. Quase nenhum mostra coreografia real — sequência de keyframes orquestrada, timing function calibrada, fluxo de cena. Para entender animação web de verdade, faltava exercício com escopo maior que um botão.',
@@ -556,7 +556,7 @@ export const PROJECTS = [
     codeUrl: 'https://github.com/jeanderson-silva8/pj-tradutor',
     cover: '/tradutor-dia-highres.png',
     mobileCover: '/tradutor-mobile-highres.png',
-    videoUrl: null,
+    videoUrl: '/videos/tradutor.mp4',
     detail: {
       problem:
         'Google Tradutor é poderoso mas pesado, cheio de tracking, e força login para histórico. Para tradução rápida e privada — colar texto, escolher idioma, copiar resultado — não havia versão minimalista decente. Boa parte das alternativas é landing de afiliado disfarçada de tradutor.',
