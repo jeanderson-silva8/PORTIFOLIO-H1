@@ -307,7 +307,7 @@ export const PROJECTS = [
     mainTags: ['React 19', 'Node.js', 'MongoDB'],
     allTags: ['React v19', 'Vite', 'Node.js', 'Express.js v5', 'MongoDB Atlas', 'JWT', 'Axios', 'Lucide React', 'Vercel Serverless'],
     badges: ['Full Stack', 'JWT Auth'],
-    liveUrl: 'https://organiza-dashboard-full.vercel.app/login',
+    liveUrl: 'https://organiza-dashboard-full.vercel.app',
     codeUrl: 'https://github.com/jeanderson-silva8/organiza-dashboard-full',
     cover: '/organiza-dia-highres.png',
     mobileCover: '/organiza-mobile-highres.png',
