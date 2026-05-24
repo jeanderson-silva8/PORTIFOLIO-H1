@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: '#stack',    label: 'Stack' },
   { href: '#process',  label: 'Processo' },
   { href: '#about',    label: 'Sobre' },
+  { href: '#contact',  label: 'Contato' },
 ];
 
 export default function Navbar() {
