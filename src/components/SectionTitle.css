@@ -1,0 +1,66 @@
+.sect-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-16);
+  max-width: 60ch;
+}
+
+.sect-title--center {
+  margin-inline: auto;
+  text-align: center;
+  align-items: center;
+}
+
+/* ── Eyebrow ──────────────────────────────────────────────── */
+.sect-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-accent);
+  width: fit-content;
+}
+.sect-eyebrow-bracket { color: var(--color-text-mute); }
+
+/* ── Heading ──────────────────────────────────────────────── */
+.sect-heading {
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  color: var(--color-text);
+}
+
+.sect-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-block: 0.06em;
+}
+
+.sect-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.sect-word--accent {
+  color: var(--color-accent);
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* ── Descrição ────────────────────────────────────────────── */
+.sect-description {
+  font-size: var(--text-lg);
+  color: var(--color-text-dim);
+  line-height: 1.55;
+  max-width: 56ch;
+}
+
+@media (max-width: 768px) {
+  .sect-title { margin-bottom: var(--space-12); }
+  .sect-description { font-size: var(--text-base); }
+}

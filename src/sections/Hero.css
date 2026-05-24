@@ -1,0 +1,437 @@
+/* ═══════════════════════════════════════════════════════════
+   HERO — Editorial premium
+   ═══════════════════════════════════════════════════════════ */
+
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: var(--nav-height);
+  overflow: hidden;
+  isolation: isolate;
+
+  /* Spotlight: posição inicial centralizada (vira dinâmica via JS) */
+  --mx: 50%;
+  --my: 50%;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CAMADA 1 — Aurora: blobs dourados em câmera lenta
+   ═══════════════════════════════════════════════════════════ */
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+
+.hero-aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.55;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.hero-aurora-blob--1 {
+  top: -22%;
+  right: -12%;
+  width: 720px;
+  height: 720px;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.30), transparent 65%);
+  animation: aurora-drift-1 28s var(--ease-inout) infinite alternate;
+}
+.hero-aurora-blob--2 {
+  bottom: -28%;
+  left: -10%;
+  width: 680px;
+  height: 680px;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.18), transparent 60%);
+  animation: aurora-drift-2 34s var(--ease-inout) infinite alternate;
+}
+.hero-aurora-blob--3 {
+  top: 30%;
+  left: 40%;
+  width: 420px;
+  height: 420px;
+  opacity: 0.4;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.12), transparent 55%);
+  animation: aurora-drift-3 22s var(--ease-inout) infinite alternate;
+}
+
+@keyframes aurora-drift-1 {
+  0%   { transform: translate(0, 0)         scale(1); }
+  100% { transform: translate(-80px, 60px)  scale(1.08); }
+}
+@keyframes aurora-drift-2 {
+  0%   { transform: translate(0, 0)         scale(1); }
+  100% { transform: translate(70px, -90px)  scale(1.12); }
+}
+@keyframes aurora-drift-3 {
+  0%   { transform: translate(0, 0)        scale(1); }
+  100% { transform: translate(120px, 40px) scale(0.92); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CAMADA 2 — DotGrid (pontos sutis, sempre visíveis)
+   ═══════════════════════════════════════════════════════════ */
+.hero-dotgrid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(245, 243, 238, 0.06) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-position: 0 0;
+  opacity: 0.7;
+  contain: strict;
+}
+/* Fade nas bordas via gradient sólido sobreposto (mais barato que mask-image) */
+.hero-dotgrid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 35%, var(--color-bg) 90%);
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CAMADA 3 — Spotlight: revela mais grid + halo dourado
+   onde o cursor está. Pintura redonda mascarada por --mx/--my.
+   ═══════════════════════════════════════════════════════════ */
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  /* Camada 1: pontos MAIS brilhantes só dentro do spotlight */
+  background-image: radial-gradient(circle, rgba(201, 168, 76, 0.35) 1px, transparent 1px);
+  background-size: 26px 26px;
+
+  /* Máscara que limita visibilidade à área do cursor */
+  -webkit-mask-image: radial-gradient(circle 320px at var(--mx) var(--my), #000 0%, transparent 70%);
+          mask-image: radial-gradient(circle 320px at var(--mx) var(--my), #000 0%, transparent 70%);
+
+  /* Animação suave do tracking */
+  transition: opacity 600ms var(--ease-out);
+  contain: strict;
+  will-change: mask-position;
+}
+
+/* Halo dourado dispersado por cima do spotlight */
+.hero-spotlight::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 240px at var(--mx) var(--my), rgba(201, 168, 76, 0.08), transparent 70%);
+  pointer-events: none;
+}
+
+/* Touch devices: sem spotlight (sem cursor real) */
+@media (hover: none) {
+  .hero-spotlight { display: none; }
+}
+
+/* ── Massive Background Type ──────────────────────────────── */
+.hero-mega {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+.hero-mega span {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: var(--text-mega);
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245, 243, 238, 0.06);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 243, 238, 0.04) 0%,
+    rgba(201, 168, 76, 0.06) 50%,
+    rgba(245, 243, 238, 0.02) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* ── Grid principal ───────────────────────────────────────── */
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(0, 4fr) minmax(180px, 1fr);
+  gap: var(--space-12);
+  align-items: center;
+  padding-block: var(--space-16);
+}
+
+/* ── Coluna esquerda (meta) ───────────────────────────────── */
+.hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  align-self: start;
+  padding-top: var(--space-4);
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-text-mute);
+}
+.hero-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 8px var(--color-success);
+}
+
+.hero-mini-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-xs);
+  max-width: 220px;
+}
+.hero-mini-label {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text-mute);
+  font-size: 0.65rem;
+}
+.hero-mini-value { color: var(--color-text); font-weight: 500; }
+
+/* ── Coluna central (headline) ────────────────────────────── */
+.hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+.hero-title {
+  font-size: var(--text-hero);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+  color: var(--color-text);
+}
+
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.05em;
+}
+.hero-line--rotator { padding-top: 0.15em; }
+
+.hero-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+.hero-word--accent {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+.hero-word--mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.55em;
+  letter-spacing: -0.02em;
+  padding: 0.2em 0.5em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  vertical-align: middle;
+}
+
+/* Rotator (cursor piscando que troca termo) */
+.hero-rotator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  min-width: 6ch;
+}
+.hero-rotator-text {
+  display: inline-block;
+  color: var(--color-accent);
+  animation: hero-flip-in 0.45s var(--ease-out);
+}
+.hero-cursor {
+  display: inline-block;
+  width: 0.55ch;
+  height: 1em;
+  background: var(--color-accent);
+  vertical-align: -0.12em;
+  animation: hero-cursor-blink 1s steps(2) infinite;
+}
+
+@keyframes hero-flip-in {
+  from { transform: translateY(60%); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+@keyframes hero-cursor-blink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ── Sub e CTAs ───────────────────────────────────────────── */
+.hero-sub {
+  font-size: var(--text-lg);
+  color: var(--color-text-dim);
+  max-width: 56ch;
+  line-height: 1.55;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+.hero-ctas > span { display: inline-flex; }
+
+/* ── Coluna direita (stats) ───────────────────────────────── */
+.hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  align-self: start;
+  padding-top: var(--space-4);
+  border-left: 1px solid var(--color-border);
+  padding-left: var(--space-6);
+}
+.hero-stat { display: flex; flex-direction: column; gap: var(--space-1); }
+.hero-stat-value {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--color-accent);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text-mute);
+}
+
+/* ── Indicador de scroll ──────────────────────────────────── */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: var(--space-16);
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-mute);
+  z-index: 3;
+  transition: color var(--dur-base) var(--ease-magnetic);
+}
+.hero-scroll-indicator:hover { color: var(--color-accent); }
+.hero-scroll-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(180deg, transparent, var(--color-text-mute));
+}
+.hero-scroll-indicator:hover .hero-scroll-line {
+  background: linear-gradient(180deg, transparent, var(--color-accent));
+}
+.hero-scroll-text {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* ── Marquee inferior ─────────────────────────────────────── */
+.hero-marquee {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  background: linear-gradient(180deg, transparent, rgba(10, 10, 15, 0.8));
+  overflow: hidden;
+  z-index: 3;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.hero-marquee-inner {
+  display: flex;
+  gap: var(--space-12);
+  width: max-content;
+  animation: hero-marquee 38s linear infinite;
+  padding-left: var(--space-12);
+}
+.hero-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-text-mute);
+  white-space: nowrap;
+}
+.hero-marquee-item svg { color: var(--color-accent); }
+
+@keyframes hero-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Responsivo ───────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .hero-meta, .hero-stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    border: none;
+    padding: 0;
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero { min-height: 95dvh; }
+  .hero-stats { display: none; }
+  .hero-mini-card { display: none; }
+  .hero-mega span { font-size: clamp(7rem, 38vw, 18rem); }
+  .hero-scroll-indicator { display: none; }
+  .hero-sub { font-size: var(--text-base); }
+}

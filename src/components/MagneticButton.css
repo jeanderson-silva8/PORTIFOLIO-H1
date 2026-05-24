@@ -1,0 +1,64 @@
+.mb {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: 0.95rem 1.6rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  isolation: isolate;
+  white-space: nowrap;
+  transition:
+    transform var(--dur-base) var(--ease-magnetic),
+    color var(--dur-base) var(--ease-magnetic),
+    border-color var(--dur-base) var(--ease-magnetic),
+    box-shadow var(--dur-base) var(--ease-magnetic);
+  will-change: transform;
+}
+
+.mb:hover { transform: scale(1.03); }
+.mb:active { transform: scale(0.98); }
+
+.mb-label {
+  position: relative;
+  z-index: 2;
+  transition: color var(--dur-base) var(--ease-magnetic);
+}
+.mb svg { position: relative; z-index: 2; transition: transform var(--dur-base) var(--ease-magnetic); }
+.mb:hover svg { transform: translateX(3px); }
+
+/* Camada de preenchimento deslizante */
+.mb-fill {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  transform: translateY(101%);
+  transition: transform var(--dur-base) var(--ease-magnetic);
+}
+
+/* ── Variante PRIMARY (champagne) ─────────────────────── */
+.mb-primary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.18);
+}
+.mb-primary .mb-fill { background: var(--color-accent-soft); }
+.mb-primary:hover .mb-fill { transform: translateY(0); }
+.mb-primary:hover { box-shadow: 0 12px 36px rgba(201, 168, 76, 0.32); }
+
+/* ── Variante GHOST (borda sutil) ─────────────────────── */
+.mb-ghost {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+.mb-ghost .mb-fill { background: var(--color-surface); }
+.mb-ghost:hover .mb-fill { transform: translateY(0); }
+.mb-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }

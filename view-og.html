@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizador da Imagem Open Graph (OG Image)</title>
+  <style>
+    :root {
+      --bg-color: #0A0A0F;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --border-color: rgba(201, 168, 76, 0.2);
+      --gold-color: #C9A84C;
+      --text-color: #F5F3EE;
+      --text-gray: #A8A8B5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    /* Glows de fundo idênticos ao do app */
+    .bg-glow-1 {
+      position: fixed;
+      top: -10%;
+      right: -10%;
+      width: 50vw;
+      height: 50vh;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.1) 0%, rgba(10, 10, 15, 0) 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .bg-glow-2 {
+      position: fixed;
+      bottom: -10%;
+      left: -10%;
+      width: 50vw;
+      height: 50vh;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.05) 0%, rgba(10, 10, 15, 0) 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1240px;
+      width: 100%;
+      text-align: center;
+      z-index: 10;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .logo-badge {
+      background-color: var(--gold-color);
+      color: var(--bg-color);
+      font-weight: 900;
+      font-size: 1.2rem;
+      padding: 6px 14px;
+      border-radius: 8px;
+    }
+
+    .logo-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span {
+      color: var(--text-gray);
+      font-weight: 400;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #F5F3EE 0%, #C9A84C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+    }
+
+    p.subtitle {
+      color: var(--text-gray);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Galeria / Exibição */
+    .image-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      margin-bottom: 2.5rem;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .image-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201, 168, 76, 0.4);
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1200 / 630;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: #000;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      padding: 0 4px;
+      font-size: 0.9rem;
+      color: var(--text-gray);
+    }
+
+    .dimension-badge {
+      background: rgba(201, 168, 76, 0.15);
+      color: var(--gold-color);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-weight: bold;
+    }
+
+    /* Botão de Ação */
+    .action-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--gold-color);
+      color: var(--bg-color);
+      border: 1px solid var(--gold-color);
+    }
+
+    .btn-primary:hover {
+      background-color: #dfba57;
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-color);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    footer {
+      margin-top: 3rem;
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <div class="container">
+    <header>
+      <div class="logo-container">
+        <span class="logo-badge">J</span>
+        <span class="logo-text">jeanderson<span>.dev</span></span>
+      </div>
+      <h1>Visualizador de Imagem Open Graph</h1>
+      <p class="subtitle">A imagem abaixo foi gerada sob medida combinando a sua foto de perfil do WhatsApp, tipografia impecável do Google Fonts e o design dourado do seu portfólio.</p>
+    </header>
+
+    <div class="image-card">
+      <div class="image-wrapper">
+        <!-- O caminho relativo aponta para a og-image.png na pasta public -->
+        <img src="public/og-image.png" alt="Jeanderson Silva OG Image" id="og-img">
+      </div>
+      <div class="image-info">
+        <span>Nome do arquivo: <code>public/og-image.png</code></span>
+        <span class="dimension-badge">1200 x 630 (1.91:1)</span>
+      </div>
+    </div>
+
+    <div class="action-group">
+      <a href="public/og-image.png" target="_blank" class="btn btn-primary">
+        Ver Imagem em Tela Cheia
+      </a>
+      <a href="index.html" class="btn btn-secondary">
+        Ir para o Portfólio
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    Criado automaticamente com amor pelo Antigravity AI
+  </footer>
+</body>
+</html>

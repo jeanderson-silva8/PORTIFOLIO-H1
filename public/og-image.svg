@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Importação de fontes para renderização perfeita no Edge Headless -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Playfair+Display:ital,wght@1,500;1,600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap');
+      
+      text {
+        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      }
+    </style>
+
+    <!-- Gradiente do fundo -->
+    <radialGradient id="bgGlow" cx="80%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0A0A0F" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bgGlow2" cx="10%" cy="90%" r="50%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0A0A0F" stop-opacity="0"/>
+    </radialGradient>
+    
+    <!-- Gradiente do texto mega -->
+    <linearGradient id="megaText" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F5F3EE" stop-opacity="0.04"/>
+      <stop offset="50%" stop-color="#C9A84C" stop-opacity="0.09"/>
+      <stop offset="100%" stop-color="#F5F3EE" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo base -->
+  <rect width="1200" height="630" fill="#0A0A0F"/>
+  <rect width="1200" height="630" fill="url(#bgGlow)"/>
+  <rect width="1200" height="630" fill="url(#bgGlow2)"/>
+
+  <!-- DEV. mega no fundo -->
+  <text x="600" y="480"
+        font-family="Inter, sans-serif"
+        font-size="520"
+        font-weight="900"
+        text-anchor="middle"
+        fill="url(#megaText)"
+        letter-spacing="-30">
+    DEV.
+  </text>
+
+  <!-- Logo mark "J" -->
+  <rect x="80" y="80" width="60" height="60" rx="14" fill="#C9A84C"/>
+  <text x="110" y="125"
+        font-family="Inter, sans-serif"
+        font-size="36"
+        font-weight="800"
+        text-anchor="middle"
+        fill="#0A0A0F">
+    J
+  </text>
+
+  <!-- Brand text -->
+  <text x="160" y="120"
+        font-family="Inter, sans-serif"
+        font-size="22"
+        font-weight="600"
+        fill="#F5F3EE">
+    jeanderson<tspan fill="#6B6B7A" font-weight="400">.dev</tspan>
+  </text>
+
+  <!-- Nome Grande -->
+  <text x="80" y="290"
+        font-family="Inter, sans-serif"
+        font-size="82"
+        font-weight="800"
+        fill="#F5F3EE"
+        letter-spacing="-3">
+    Jeanderson Silva
+  </text>
+
+  <!-- Cargo Estilizado -->
+  <text x="80" y="380"
+        font-family="Playfair Display, Georgia, serif"
+        font-size="56"
+        font-style="italic"
+        font-weight="500"
+        fill="#C9A84C"
+        letter-spacing="-1">
+    Full Stack Developer
+  </text>
+
+  <!-- Tagline curta e tecnologias -->
+  <text x="80" y="475"
+        font-family="Inter, sans-serif"
+        font-size="24"
+        font-weight="500"
+        fill="#A8A8B5">
+    12 SaaS em produção · React · Node.js · Python · PostgreSQL
+  </text>
+
+  <!-- Status indicator -->
+  <circle cx="92" cy="552" r="6" fill="#4ADE80"/>
+  <text x="108" y="558"
+        font-family="JetBrains Mono, monospace"
+        font-size="14"
+        fill="#A8A8B5"
+        letter-spacing="3">
+    SYSTEM OPERATIONAL · DISPONÍVEL
+  </text>
+
+  <!-- Borda dourada sutil -->
+  <rect x="0.5" y="0.5" width="1199" height="629" fill="none" stroke="#C9A84C" stroke-opacity="0.15"/>
+</svg>

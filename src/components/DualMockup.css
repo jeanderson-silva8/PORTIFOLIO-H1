@@ -1,0 +1,234 @@
+/* ═══════════════════════════════════════════════════════════
+   DUAL MOCKUP — Laptop prata realista + Phone sobreposto
+   Estilo: foto de produto sobre madeira com halo dourado
+   ═══════════════════════════════════════════════════════════ */
+
+.dual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 6% 4% 4%;
+  background:
+    radial-gradient(ellipse at 50% 55%, #2a1e12 0%, #150f0a 45%, #0a0705 100%);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ── Halo dourado MUITO presente (como na ref) ─────────── */
+.dual-glow {
+  position: absolute;
+  inset: 8% 6% 10% 6%;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 55%, rgba(255, 190, 90, 0.55), transparent 65%),
+    radial-gradient(ellipse 90% 70% at 50% 50%, rgba(201, 168, 76, 0.35), transparent 70%);
+  filter: blur(55px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LAPTOP — prata/alumínio com teclado visível
+   ═══════════════════════════════════════════════════════════ */
+.dual-laptop {
+  position: absolute;
+  top: 18%;
+  left: 6%;
+  width: 72%;
+  z-index: 2;
+}
+
+/* Frame da tela — janela estilo macOS */
+.dual-laptop-frame {
+  background: #1a1a22;
+  border-radius: 12px 12px 4px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-bottom: none;
+  overflow: hidden;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Barra de título estilo macOS */
+.dual-laptop-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  background: linear-gradient(180deg, #2a2a32, #1f1f27);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+.dual-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.3);
+}
+.dual-dot--red    { background: #ff5f57; }
+.dual-dot--yellow { background: #febc2e; }
+.dual-dot--green  { background: #28c840; }
+
+/* Tela */
+.dual-laptop-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.dual-laptop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* ── Base fina e escura (como no print) ────────────────── */
+.dual-laptop-base {
+  position: relative;
+  width: 116%;
+  height: 14px;
+  margin: 0 -8%;
+  background: linear-gradient(180deg, #1a1a22 0%, #0e0e14 60%, #050507 100%);
+  clip-path: polygon(3% 0%, 97% 0%, 100% 100%, 0% 100%);
+  border-radius: 0 0 6px 6px;
+  box-shadow:
+    0 20px 30px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.dual-laptop-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16%;
+  height: 4px;
+  background: linear-gradient(180deg, #0a0a10, #1a1a22);
+  border-radius: 0 0 6px 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PHONE — sobreposto, grande, à direita
+   ═══════════════════════════════════════════════════════════ */
+.dual-phone {
+  position: absolute;
+  bottom: 14%;
+  right: 6%;
+  width: 26%;
+  aspect-ratio: 9 / 19;
+  background: linear-gradient(135deg, #1a1a22, #0a0a0f);
+  border: 3px solid #050507;
+  border-radius: 30px;
+  padding: 7px;
+  box-shadow:
+    0 50px 90px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(201, 168, 76, 0.25),
+    0 0 60px rgba(255, 180, 80, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  z-index: 3;
+}
+
+.dual-phone-speaker {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24%;
+  height: 4px;
+  background: #050507;
+  border-radius: var(--radius-full);
+  z-index: 4;
+}
+
+.dual-phone-notch {
+  position: absolute;
+  top: 8px;
+  right: 20%;
+  width: 9px;
+  height: 9px;
+  background: #050507;
+  border-radius: 50%;
+  z-index: 4;
+}
+
+.dual-phone-screen {
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.dual-phone-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* ── Placeholder ─────────────────────────────────────────── */
+.dual-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(201, 168, 76, 0.10), transparent 55%),
+    var(--color-surface);
+}
+.dual-placeholder-initials {
+  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  font-style: italic;
+  color: var(--color-accent);
+  opacity: 0.85;
+  letter-spacing: -0.03em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LABELS Desktop / Mobile
+   ═══════════════════════════════════════════════════════════ */
+.dual-labels {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.dual-label {
+  position: absolute;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(0.95rem, 1.7vw, 1.35rem);
+  color: var(--color-text);
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+  transform: translateX(-50%);
+}
+
+/* Centro da laptop: left 6% + width 72% → centro em 42% */
+.dual-label--desktop {
+  bottom: 18%;
+  left: 42%;
+}
+
+/* Centro do phone: right 6% + width 26% → centro em 19% da direita = 81% da esquerda */
+.dual-label--mobile {
+  bottom: 4%;
+  left: 81%;
+}
+
+@media (max-width: 600px) {
+  .dual-label { font-size: 0.85rem; }
+}

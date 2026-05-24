@@ -1,0 +1,161 @@
+.contact {
+  position: relative;
+  padding-block: var(--space-32);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(201, 168, 76, 0.08), transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(201, 168, 76, 0.04), transparent 50%);
+}
+
+.contact-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Grid de canais ──────────────────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+.cc {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--space-8);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  transition:
+    transform var(--dur-base) var(--ease-magnetic),
+    border-color var(--dur-base) var(--ease-magnetic),
+    background-color var(--dur-base) var(--ease-magnetic),
+    box-shadow var(--dur-base) var(--ease-magnetic);
+  will-change: transform;
+}
+.cc:hover {
+  border-color: var(--color-accent);
+  background: var(--color-surface-2);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(201, 168, 76, 0.2);
+}
+
+/* Variante destaque (WhatsApp) */
+.cc--accent {
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(201, 168, 76, 0.04));
+  border-color: rgba(201, 168, 76, 0.3);
+}
+.cc--accent .cc-icon {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: transparent;
+}
+
+/* ── Icon ────────────────────────────────────────────────── */
+.cc-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-accent);
+  border: 1px solid var(--color-border);
+  transition:
+    background-color var(--dur-base) var(--ease-magnetic),
+    color var(--dur-base) var(--ease-magnetic),
+    transform var(--dur-base) var(--ease-magnetic);
+}
+.cc:hover .cc-icon {
+  transform: scale(1.05) rotate(-4deg);
+}
+
+/* ── Body ────────────────────────────────────────────────── */
+.cc-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.cc-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-text-mute);
+}
+.cc-handle {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Arrow ───────────────────────────────────────────────── */
+.cc-arrow {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-mute);
+  transition:
+    background-color var(--dur-base) var(--ease-magnetic),
+    color var(--dur-base) var(--ease-magnetic),
+    border-color var(--dur-base) var(--ease-magnetic),
+    transform var(--dur-base) var(--ease-magnetic);
+}
+.cc:hover .cc-arrow {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+  transform: rotate(-30deg);
+}
+
+/* ── Disponibilidade ─────────────────────────────────────── */
+.contact-availability {
+  margin-top: var(--space-12);
+  text-align: center;
+}
+.contact-availability p {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-text-mute);
+}
+.contact-avail-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
+  animation: contact-pulse 2s var(--ease-inout) infinite;
+}
+@keyframes contact-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  50%      { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
+}
+
+@media (max-width: 720px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .cc { padding: var(--space-4) var(--space-6); }
+  .cc-icon { width: 44px; height: 44px; }
+}

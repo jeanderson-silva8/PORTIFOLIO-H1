@@ -1,0 +1,194 @@
+.pgrid {
+  position: relative;
+  padding-block: var(--space-32);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(201, 168, 76, 0.04), transparent 45%),
+    var(--color-bg);
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.pgrid-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-16);
+  max-width: 60ch;
+}
+
+.pgrid-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-accent);
+  width: fit-content;
+}
+.pgrid-eyebrow-bracket { color: var(--color-text-mute); }
+
+.pgrid-title {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+.pgrid-title-accent {
+  color: var(--color-accent);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.pgrid-description {
+  font-size: var(--text-lg);
+  color: var(--color-text-dim);
+  line-height: 1.55;
+}
+
+/* ── Grid ────────────────────────────────────────────────── */
+.pgrid-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 900px) {
+  .pgrid-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+.pgrid-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition:
+    border-color var(--dur-base) var(--ease-magnetic),
+    box-shadow var(--dur-base) var(--ease-magnetic),
+    transform var(--dur-base) var(--ease-magnetic);
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: default;
+}
+.pgrid-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(201, 168, 76, 0.2);
+}
+
+/* O ProjectMockup já tem a sua estrutura — neutralizo a borda dele dentro do card */
+.pgrid-card .mockup {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+/* ── Body ────────────────────────────────────────────────── */
+.pgrid-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+
+.pgrid-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.pgrid-card-tag {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-mute);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+.pgrid-card-title {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+.pgrid-card-tagline {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.pgrid-card-description {
+  font-size: var(--text-sm);
+  color: var(--color-text-dim);
+  line-height: 1.6;
+  /* Limita a 4 linhas pra manter cards alinhados — texto completo na detail */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+          line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Actions ─────────────────────────────────────────────── */
+.pgrid-card-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.pgrid-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  transition: color var(--dur-base) var(--ease-magnetic), transform var(--dur-base) var(--ease-magnetic);
+}
+.pgrid-card-link:hover {
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.pgrid-card-link--accent {
+  margin-left: auto;
+  color: var(--color-accent);
+}
+.pgrid-card-link--accent:hover {
+  color: var(--color-accent);
+  transform: translateY(-1px) translateX(2px);
+}
+
+.pgrid-card-arrow {
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-mute);
+  transition:
+    background-color var(--dur-base) var(--ease-magnetic),
+    color var(--dur-base) var(--ease-magnetic),
+    border-color var(--dur-base) var(--ease-magnetic),
+    transform var(--dur-base) var(--ease-magnetic);
+}
+.pgrid-card:hover .pgrid-card-arrow {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+  transform: rotate(-15deg);
+}

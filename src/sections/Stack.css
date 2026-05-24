@@ -1,0 +1,183 @@
+/* ═══════════════════════════════════════════════════════════
+   STACK — Editorial 4 colunas
+   ═══════════════════════════════════════════════════════════ */
+
+.stack {
+  position: relative;
+  padding-block: var(--space-32);
+  background:
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 50%, var(--color-bg) 100%);
+  border-block: 1px solid var(--color-border);
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+/* ── Coluna ──────────────────────────────────────────────── */
+.stack-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-8) var(--space-6);
+  border-right: 1px solid var(--color-border);
+  position: relative;
+  transition: background-color var(--dur-base) var(--ease-magnetic);
+}
+.stack-col:last-child { border-right: none; }
+.stack-col:hover { background: var(--color-surface-2); }
+
+/* Linha dourada que cresce no hover (assinatura editorial) */
+.stack-col::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.stack-col:hover::before { transform: scaleX(1); }
+
+/* ── Header da coluna ─────────────────────────────────────── */
+.stack-col-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.stack-col-index {
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+}
+.stack-col-label {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.stack-col-description {
+  font-size: var(--text-sm);
+  color: var(--color-text-dim);
+  line-height: 1.55;
+  min-height: 3.6em;
+}
+
+/* ── Lista de techs ──────────────────────────────────────── */
+.stack-col-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex-grow: 1;
+}
+
+.stack-col-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-block: 0.4rem;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  border-bottom: 1px dashed transparent;
+  transition: color var(--dur-base) var(--ease-magnetic), border-color var(--dur-base) var(--ease-magnetic);
+}
+
+.stack-col:hover .stack-col-item {
+  border-bottom-color: var(--color-border);
+}
+
+.stack-col-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-text-mute);
+  transition: background-color var(--dur-base) var(--ease-magnetic), transform var(--dur-base) var(--ease-magnetic);
+}
+.stack-col:hover .stack-col-bullet {
+  background: var(--color-accent);
+  transform: scale(1.3);
+}
+
+/* ── Âncora pro projeto ──────────────────────────────────── */
+.stack-col-anchor {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-xs);
+  color: var(--color-text-mute);
+  transition: color var(--dur-base) var(--ease-magnetic);
+}
+.stack-col-anchor:hover { color: var(--color-accent); }
+.stack-col-anchor:hover .stack-col-anchor-name { color: var(--color-accent); }
+
+.stack-col-anchor > .font-mono {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.65rem;
+}
+
+.stack-col-anchor-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: color var(--dur-base) var(--ease-magnetic);
+}
+.stack-col-anchor svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.25rem;
+  transition: transform var(--dur-base) var(--ease-magnetic);
+}
+.stack-col-anchor:hover svg { transform: translate(2px, -2px); }
+
+/* ── Footnote ────────────────────────────────────────────── */
+.stack-footnote {
+  margin-top: var(--space-8);
+  text-align: center;
+}
+.stack-footnote p {
+  font-size: var(--text-xs);
+  color: var(--color-text-mute);
+  letter-spacing: 0.04em;
+}
+.stack-footnote-link {
+  color: var(--color-accent);
+  border-bottom: 1px dashed var(--color-accent);
+  padding-bottom: 1px;
+  transition: color var(--dur-base) var(--ease-magnetic);
+}
+.stack-footnote-link:hover { color: var(--color-accent-soft); }
+
+/* ── Responsivo ──────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .stack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stack-col:nth-child(2n) { border-right: none; }
+  .stack-col:nth-child(-n+2) { border-bottom: 1px solid var(--color-border); }
+}
+
+@media (max-width: 640px) {
+  .stack-grid { grid-template-columns: 1fr; }
+  .stack-col { border-right: none; border-bottom: 1px solid var(--color-border); }
+  .stack-col:last-child { border-bottom: none; }
+}

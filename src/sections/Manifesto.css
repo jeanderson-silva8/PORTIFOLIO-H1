@@ -1,0 +1,129 @@
+/* ═══════════════════════════════════════════════════════════
+   MANIFESTO — declaração de contraste editorial
+   ═══════════════════════════════════════════════════════════ */
+
+.mf {
+  position: relative;
+  padding-block: clamp(8rem, 18vh, 16rem);
+  background: #050507; /* mais escuro que o bg padrão — quebra de seção */
+  overflow: hidden;
+  isolation: isolate;
+  border-block: 1px solid var(--color-border);
+}
+
+/* ── Textura de fundo (sutil) ─────────────────────────────── */
+.mf-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.18;
+  background-image:
+    radial-gradient(circle at 18% 30%, rgba(201, 168, 76, 0.12), transparent 35%),
+    radial-gradient(circle at 82% 70%, rgba(201, 168, 76, 0.06), transparent 40%);
+}
+
+.mf-glow {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(201, 168, 76, 0.05), transparent 60%);
+  filter: blur(60px);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Inner ────────────────────────────────────────────────── */
+.mf-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-12);
+}
+
+/* ── Eyebrow ──────────────────────────────────────────────── */
+.mf-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--color-accent);
+}
+.mf-eyebrow-bracket { color: var(--color-text-mute); }
+
+/* ── Quiet (frase neutra menor) ───────────────────────────── */
+.mf-quiet {
+  max-width: 36ch;
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  font-weight: 400;
+  color: var(--color-text-mute);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+.mf-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-block: 0.04em;
+}
+.mf-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* ── Divider ──────────────────────────────────────────────── */
+.mf-divider {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--color-accent);
+  transform-origin: center;
+  margin: 0 auto;
+}
+
+/* ── Loud (frase massiva drama) ───────────────────────────── */
+.mf-loud {
+  max-width: 22ch;
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--color-text);
+}
+.mf-loud .mf-word:nth-child(2),
+.mf-loud .mf-word:nth-child(5),
+.mf-loud .mf-word:nth-child(7),
+.mf-loud .mf-word:nth-child(9) {
+  color: var(--color-accent);
+}
+
+/* ── Assinatura ──────────────────────────────────────────── */
+.mf-signature {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-text-mute);
+  margin-top: var(--space-8);
+}
+.mf-signature-line {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--color-text-mute);
+}
+
+@media (max-width: 640px) {
+  .mf-loud { font-size: clamp(2rem, 11vw, 3.5rem); }
+}
