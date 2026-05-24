@@ -17,9 +17,7 @@ export default function About() {
       <div className="container">
         <SectionTitle
           eyebrow="05 / Sobre"
-          title="Por trás dos commits,"
-          accent="uma pessoa."
-          description="O resumo profissional curto — e três coisas que importam de verdade."
+          title="Por trás dos commits, uma pessoa."
         />
 
         <div className="about-grid">
