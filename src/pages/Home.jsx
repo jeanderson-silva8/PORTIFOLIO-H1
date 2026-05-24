@@ -124,7 +124,7 @@ export default function Home() {
       <title>Jeanderson Silva — Full Stack Developer</title>
       <meta
         name="description"
-        content="Construo plataformas SaaS que rodam em produção. 11 projetos no ar — Lumina Analytics, FlowSnyker, BrieflyAI, Nexus Portal, TrendScope. React, TypeScript, Node, Python."
+        content="Construo plataformas SaaS que rodam em produção. 12 projetos no ar — Lumina Analytics, FlowSnyker, BrieflyAI, Nexus Portal, TrendScope. React, TypeScript, Node, Python."
       />
       <link rel="canonical" href="https://jeanderson.dev/" />
 
