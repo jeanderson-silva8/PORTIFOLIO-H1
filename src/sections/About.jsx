@@ -106,7 +106,7 @@ export default function About() {
                 <Coffee size={16} className="about-meta-icon" />
                 <span className="about-meta-label font-mono">Fora-tech</span>
                 <span className="about-meta-value">
-                  Quando não estou codando, geralmente estou pensando em código.
+                  Me tornar um excelente profissional dev, me fez antes disso me tornar profissional em todas as outras áreas da minha vida: Família, Religião, amigos e Qualidade de vida. É isso que faço quando não estou codando.
                 </span>
               </Reveal.Item>
             </Reveal.Group>
